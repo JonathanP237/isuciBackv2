@@ -4,8 +4,8 @@ import pool from '../config/dbConfig.js';
 import {getUsuarioLogin} from './authService.js';
 
 export async function validarDatosPerfil(res) {
-  try {    
-    const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [parseInt(getUsuarioLogin.iddocumento,10)]);
+  try {        
+    const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [parseInt(getUsuarioLogin().iddocumento,10)]);
     
     if (result.rows.length === 0) {
       throw new Error("Usuario no encontrado");      
