@@ -1,4 +1,4 @@
-import { autUsuario, validarTipoUsuario } from '../services/authService.js';
+import { autUsuario, validarTipoUsuario,  getUsuarioLogin} from '../services/authService.js';
 import { enviarCorreoConfirmacion } from '../services/emailService.js';
 import pool from '../config/dbConfig.js';
 
@@ -16,7 +16,7 @@ export async function login(req, res) {
       return res.status(401).json({ message: "Usuario o contraseña incorrectos." });
     }
 
-    return res.json(await validarTipoUsuario(usuarioLogin));
+    return res.json(await validarTipoUsuario(getUsuarioLogin));
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error interno del servidor." });
