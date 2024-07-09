@@ -1,7 +1,7 @@
 import { getUserById, createUser, updateUser, deleteUser } from '../models/userModel.js';
 import { ValidarNombreEscuadra, ValidarEspecialidad } from '../utils/userTypeValidation.js';
 
-export async function ValidarDatosPerfil(res) {
+export async function validarDatosPerfil(res) {
   try {    
     const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [usuarioLogin.iddocumento]);
     if (result.rows.length === 0) {
