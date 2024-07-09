@@ -28,12 +28,24 @@ export async function login(req, res) {
 
 export async function register(req, res) {
   const { contrasenausuario, tipousuario } = req.body;
-  const idtipousuario = await validarTipoUsuario(tipousuario);
+  let idtipousuario = await validarTipoUsuario(tipousuario);
+
+  // Asegúrate de que idtipousuario es un número
+  if (isNaN(idtipousuario)) {
+    return res.status(400).json({ message: "Tipo de usuario inválido." });
+  }
 
   try {
     const hashedPassword = await bcrypt.hash(contrasenausuario, saltRounds);
+    const iddocumento = parseInt(req.body.iddocumento, 10);
+
+    // Verifica que iddocumento sea un número válido
+    if (isNaN(iddocumento)) {
+      return res.status(400).json({ message: "Documento de usuario inválido." });
+    }
+
     const valores = [
-      parseInt(req.body.iddocumento, 10), parseInt(req.body.iddocumento, 10), parseInt(idtipousuario, 10), null, null, 0, req.body.documentousuario, req.body.nombreusuario,
+      iddocumento, iddocumento, idtipousuario, null, null, 0, req.body.documentousuario, req.body.nombreusuario,
       req.body.apellidousuario, req.body.generousuario, req.body.fechanacimiento, req.body.correousuario, hashedPassword,
       req.body.nacionalidad, null, null, null, null, null, null, req.body.fechainiciocarrera, null
     ];
