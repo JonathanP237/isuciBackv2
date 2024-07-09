@@ -1,6 +1,8 @@
 import bcrypt from 'bcrypt';
 import pool from '../config/dbConfig.js';
 
+const usuarioLogin = null;
+
 export async function autUsuario(usuario, contrasenaIngresada) {
   const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [usuario]);
 
