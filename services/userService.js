@@ -108,3 +108,13 @@ export async function eliminarUsuario(id) {
     throw new Error('Error al eliminar el usuario.');
   }
 }
+
+export const getCiclistasLibresByGeneroAndEspecialidad = async (genero, especialidad) => {
+  const sql = `
+    SELECT *
+    FROM usuario 
+    WHERE idtipousuario = 4 AND idescuadra = 0 AND generousuario = $1 AND idespecialidad = $2
+  `;
+  const result = await pool.query(sql, [genero, especialidad]);
+  return result.rows;
+};
