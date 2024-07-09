@@ -30,7 +30,7 @@ export async function validarDatosPerfil(res) {
           telefonousuario: usuarioActual.telefonousuario,
           direccionusuario: usuarioActual.direccionusuario,
           idescuadra: usuarioActual.idescuadra,
-          anosexperiencia: usuarioActual.fechainiciocarrera,
+          anosexperiencia: anosexperiencia,
           nombreEscuadra: nombreEscuadra
         });
         break;
@@ -45,7 +45,7 @@ export async function validarDatosPerfil(res) {
           telefonousuario: usuarioActual.telefonousuario,
           direccionusuario: usuarioActual.direccionusuario,
           idescuadra: usuarioActual.idescuadra,
-          idtipocontextura: usuarioActual.idtipocontextura,
+          idtipocontextura: nombreTipoContextura,
           idespecialidad: usuarioActual.idespecialidad,
           generousuario: usuarioActual.generousuario,
           pesousuario: usuarioActual.pesousuario,
@@ -54,7 +54,7 @@ export async function validarDatosPerfil(res) {
           velocidadpromediousuario: usuarioActual.velocidadpromediousuario,
           velocidadmaximausuario: usuarioActual.velocidadmaximausuario,
           tiempociclista: usuarioActual.tiempociclista,
-          anosexperiencia: usuarioActual.fechainiciocarrera,
+          anosexperiencia: anosexperiencia,
           gradorampa: usuarioActual.gradorampa,
           nombreEscuadra: nombreEscuadra,
           nombreEspecialidad: nombreEspecialidad
