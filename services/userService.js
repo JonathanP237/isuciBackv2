@@ -1,10 +1,11 @@
 import { getUserById, createUser, updateUser, deleteUser } from '../models/userModel.js';
 import { ValidarNombreEscuadra, ValidarEspecialidad } from '../utils/userTypeValidation.js';
 import pool from '../config/dbConfig.js';
+import {getUsuarioLogin} from './authService.js';
 
 export async function validarDatosPerfil(res) {
   try {    
-    const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [usuarioLogin.iddocumento]);
+    const result = await pool.query("SELECT * FROM usuario WHERE iddocumento = $1 LIMIT 1", [getUsuarioLogin.iddocumento]);
     if (result.rows.length === 0) {
       throw new Error("Usuario no encontrado");
     }
