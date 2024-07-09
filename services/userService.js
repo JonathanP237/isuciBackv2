@@ -15,6 +15,8 @@ export async function validarDatosPerfil(res) {
     const idTipoUsuario = parseInt(usuarioActual.idtipousuario);
     const nombreEscuadra = await ValidarNombreEscuadra(usuarioActual.idescuadra);
     const nombreEspecialidad = await ValidarEspecialidad(usuarioActual.idespecialidad);
+    const anosexperiencia = await ValidarAñosExperiencia(usuarioActual.fechainiciocarrera);
+    const nombreTipoContextura = await validarTipoContextura(usuarioActual.idtipocontextura);
     switch (idTipoUsuario) {
       case 1:
       case 3:
