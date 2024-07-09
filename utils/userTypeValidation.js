@@ -1,6 +1,6 @@
 import pool from '../config/dbConfig.js';
 
-export async function ValidarNombreEscuadra(idescuadra){
+export async function validarNombreEscuadra(idescuadra){
   try {
     const result = await pool.query("SELECT * FROM escuadras WHERE idescuadra = $1 LIMIT 1", [idescuadra]);
     if (result.rows.length === 0) {
