@@ -15,7 +15,7 @@ export async function ValidarNombreEscuadra(idescuadra){
   }
 }
   
-  export async function ValidarEspecialidad(idespecialidad){
+  export async function validarEspecialidad(idespecialidad){
     try {
       const result = await pool.query("SELECT * FROM especialidades WHERE idespecialidad = $1 LIMIT 1", [idespecialidad]);
       if (result.rows.length === 0) {
@@ -30,7 +30,7 @@ export async function ValidarNombreEscuadra(idescuadra){
     }
   }
 
-  export async function ValidarAñosExperiencia(fechainiciocarrera){
+  export async function validarAñosExperiencia(fechainiciocarrera){
     const fechaActual = new Date();
     return fechaActual.getFullYear() - fechainiciocarrera.getFullYear();
   }

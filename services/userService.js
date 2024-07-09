@@ -1,5 +1,5 @@
 import { getUserById, createUser, updateUser, deleteUser } from '../models/userModel.js';
-import { ValidarNombreEscuadra, ValidarEspecialidad } from '../utils/userTypeValidation.js';
+import { validarNombreEscuadra, validarEspecialidad, validarAñosExperiencia, validarTipoContextura } from '../utils/userTypeValidation.js';
 import pool from '../config/dbConfig.js';
 import {getUsuarioLogin} from './authService.js';
 
@@ -13,9 +13,9 @@ export async function validarDatosPerfil(res) {
     const usuarioActual = result.rows[0];
     console.log(usuarioActual.idtipousuario);
     const idTipoUsuario = parseInt(usuarioActual.idtipousuario);
-    const nombreEscuadra = await ValidarNombreEscuadra(usuarioActual.idescuadra);
-    const nombreEspecialidad = await ValidarEspecialidad(usuarioActual.idespecialidad);
-    const anosexperiencia = await ValidarAñosExperiencia(usuarioActual.fechainiciocarrera);
+    const nombreEscuadra = await validarNombreEscuadra(usuarioActual.idescuadra);
+    const nombreEspecialidad = await validarEspecialidad(usuarioActual.idespecialidad);
+    const anosexperiencia = await validarAñosExperiencia(usuarioActual.fechainiciocarrera);
     const nombreTipoContextura = await validarTipoContextura(usuarioActual.idtipocontextura);
     switch (idTipoUsuario) {
       case 1:
