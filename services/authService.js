@@ -35,6 +35,21 @@ export async function validarTipoUsuario(usuarioLogin) {
   return tiposDeUsuario[usuarioLogin.idtipousuario] || "Ciclista";
 }
 
+export async function validarTipo(tipousuario){
+  console.log(tipousuario);
+  let idtipousuario = 0;
+  if(tipousuario == "Masajista"){
+    idtipousuario = 1;
+  }else if(tipousuario == "Administrador"){
+    idtipousuario = 2;
+  }else if(tipousuario == "Director de escuadra"){
+    idtipousuario = 3;
+  }else if(tipousuario == "Ciclista"){
+    idtipousuario = 4;
+  }
+  return idtipousuario;
+}
+
 export function getUsuarioLogin() {
   return usuarioLogin;
 }

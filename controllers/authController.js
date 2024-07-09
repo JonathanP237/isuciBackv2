@@ -1,4 +1,4 @@
-import { autUsuario, validarTipoUsuario,  getUsuarioLogin} from '../services/authService.js';
+import { autUsuario, validarTipoUsuario, validarTipo, getUsuarioLogin} from '../services/authService.js';
 import { enviarCorreoConfirmacion } from '../services/emailService.js';
 import pool from '../config/dbConfig.js';
 import bcrypt from 'bcrypt';
@@ -28,7 +28,7 @@ export async function login(req, res) {
 
 export async function register(req, res) {
   const { contrasenausuario, tipousuario } = req.body;
-  const idtipousuario = await validarTipoUsuario(tipousuario);
+  const idtipousuario = await validarTipo(tipousuario);
 
   try {
     const hashedPassword = await bcrypt.hash(contrasenausuario, saltRounds);
