@@ -115,6 +115,6 @@ export const getCiclistasLibresByGeneroAndEspecialidad = async (genero, especial
     FROM usuario 
     WHERE idtipousuario = 4 AND idescuadra = 0 AND generousuario = $1 AND idespecialidad = $2
   `;
-  const result = await pool.query(sql, [genero, especialidad]);
+  const result = await pool.query(sql, [genero, parseInt(especialidad,10)]);
   return result.rows;
 };
