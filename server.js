@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import squadRoutes from './routes/squadRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { setupSwagger } from './utils/swagger.js';
 
@@ -21,6 +22,7 @@ app.use(cors());
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 app.use('/squad', squadRoutes);
+app.use('/users', userRoutes);
 
 // Configurar Swagger
 setupSwagger(app);
