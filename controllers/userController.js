@@ -1,7 +1,7 @@
 import { getCiclistasLibresByGeneroAndEspecialidad } from '../services/userService.js';
 
 export const getCiclistasLibres = async (req, res) => {
-  const { genero, especialidad } = req.query;
+  const { genero, especialidad } = req.body;
 
   if (!genero || !especialidad) {
     return res.status(400).json({ message: "Falta el genero o la especialidad en la solicitud." });
