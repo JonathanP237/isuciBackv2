@@ -109,7 +109,7 @@ export async function eliminarUsuario(id) {
   }
 }
 
-export const getCiclistasLibresByGeneroAndEspecialidad = async (genero, especialidad) => {
+export async function getCiclistasLibresByGeneroAndEspecialidad(genero, especialidad){
   const sql = `
     SELECT *
     FROM usuario 
