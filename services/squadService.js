@@ -20,7 +20,7 @@ export async function getMiembrosEscuadra(id) {
 
 export async function actualizarMiembroEscuadra(idUsuario, idEscuadraNuevo) {
     const sql = `UPDATE usuario SET idescuadra = $1 WHERE idusuario = $2`;
-    const result = await pool.query(sql, [idEscuadraNuevo, idUsuario]);
+    const result = await pool.query(sql, [parseInt(idEscuadraNuevo,10), parseInt(idUsuario,10)]);
     if (result.rowCount === 0) {
         // No se encontró el usuario o no se realizó la actualización
         return { message: "Usuario no encontrado o no se pudo actualizar." };
