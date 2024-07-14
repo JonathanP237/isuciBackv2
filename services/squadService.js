@@ -13,7 +13,7 @@ export async function getTotalEscuadras() {
 }
 
 export async function getMiembrosEscuadra(id) {
-    const sql = await pool.query('SELECT * FROM usuario WHERE idescuadra = $1', [id]);
+    const sql = await pool.query('SELECT iddocumento, nombreusuario, apellidousuario, idespecialidad FROM usuario WHERE idescuadra = $1', [id]);
     const result = sql.rows;
     return result;
 }
