@@ -118,3 +118,4 @@ export async function getCiclistasLibresByGeneroAndEspecialidad(genero, especial
   const result = await pool.query(sql, [genero, parseInt(especialidad,10)]);
   return result.rows;
 };
+

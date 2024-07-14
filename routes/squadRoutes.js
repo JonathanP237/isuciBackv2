@@ -1,9 +1,10 @@
 import express from 'express';
-import { crearEscuadra, getCiclistasLibres } from '../controllers/squadController.js';
+import { crearEscuadra } from '../controllers/squadController.js';
+import { registroEscuadra } from '../controllers/squadController.js';
 
 const router = express.Router();
 
 router.post('/crear-escuadra', crearEscuadra);
-router.get('/ciclistasLibres', getCiclistasLibres);
+router.post('/registro-escuadra', registroEscuadra);
 
 export default router;

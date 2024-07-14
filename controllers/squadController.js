@@ -1,15 +1,15 @@
-export function crearEscuadra(req, res) {
-    return res.json({ message: "Escuadra creada" });
+import {registrarEscuadra} from '../services/squadService.js';
+
+export const registroEscuadra = async (req, res) => {
+  const { id, desc, idPais } = req.body;
+  if (!id || !desc || !idPais) {
+    return res.status(400).json({ message: "Falta el id, la descripcion o el id del pais en la solicitud." });
   }
-  
-  export function getCiclistasLibres(req, res) {
-    const sql = `SELECT nombreusuario, apellidousuario, iddocumento, idespecialidad, nacionalidad FROM usuario WHERE idtipousuario = 4 AND idescuadra = 0`;
-    pool.query(sql, (error, result) => {
-      if (error) {
-        console.error(error);
-        return res.status(500).json({ message: "Error al obtener los ciclistas." });
-      }
-      res.json(result.rows);
-    });
+  try{
+    const result = await registrarEscuadra(id,desc,idPais);
+    res.json(result);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({ message: "Error interno del servidor." });
   }
-  
+}
