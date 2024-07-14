@@ -17,3 +17,4 @@ export async function getMiembrosEscuadra(id) {
     const result = sql.rows;
     return result;
 }
+
