@@ -32,11 +32,11 @@ export const getMiembrosEscuadras = async (req, res) => {
   }
   try {
     let result = await getMiembrosEscuadra(id);
-    // Transformar la especialidad de cada miembro
-    result = result.map(miembro => ({
+    // Transformar la especialidad de cada miembro con await
+    result = await Promise.all(result.map(async miembro => ({
       ...miembro,
-      idespecialidad: validarEspecialidad(miembro.idespecialidad),
-    }));
+      idespecialidad: await validarEspecialidad(miembro.idespecialidad),
+    })));
     res.json(result);
   } catch (error) {
     console.error(error);
