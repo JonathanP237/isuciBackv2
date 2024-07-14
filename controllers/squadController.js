@@ -1,4 +1,5 @@
 import {registrarEscuadra, getTotalEscuadras, getMiembrosEscuadra, actualizarMiembroEscuadra} from '../services/squadService.js';
+import {validarEspecialidad} from '../utils/userTypeValidation.js';
 
 export const registroEscuadra = async (req, res) => {
   const { id, desc, pais } = req.body;
@@ -29,14 +30,19 @@ export const getMiembrosEscuadras = async (req, res) => {
   if (!id) {
     return res.status(400).json({ message: "Falta el id de la escuadra en la solicitud." });
   }
-  try{
-    const result = await getMiembrosEscuadra(id);
+  try {
+    let result = await getMiembrosEscuadra(id);
+    // Transformar la especialidad de cada miembro
+    result = result.map(miembro => ({
+      ...miembro,
+      idespecialidad: validarEspecialidad(miembro.idespecialidad),
+    }));
     res.json(result);
-  }catch(error){
+  } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error interno del servidor." });
   }
-}
+};
 
 export const asignarMiembrosEscuadras = async (req, res) => {
   const { idUsuario, idEscuadraNuevo } = req.body;
