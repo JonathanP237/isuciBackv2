@@ -6,15 +6,24 @@ export async function registrarEscuadra(id,desc,idPais) {
     return { message: "Escuadra creada" };
 }
 
-export async function getEscuadras() {
+export async function getTotalEscuadras() {
     const sql = await pool.query('SELECT * FROM escuadras');
     const result = sql.rows;
     return result;
 }
 
 export async function getMiembrosEscuadra(id) {
-    const sql = await pool.query('SELECT * FROM miembros WHERE idescuadra = $1', [id]);
+    const sql = await pool.query('SELECT * FROM usuario WHERE idescuadra = $1', [id]);
     const result = sql.rows;
     return result;
 }
 
+export async function actualizarMiembroEscuadra(idUsuario, idEscuadraNuevo) {
+    const sql = `UPDATE usuario SET idescuadra = $1 WHERE idusuario = $2`;
+    const result = await pool.query(sql, [idEscuadraNuevo, idUsuario]);
+    if (result.rowCount === 0) {
+        // No se encontró el usuario o no se realizó la actualización
+        return { message: "Usuario no encontrado o no se pudo actualizar." };
+    }
+    return { message: "Miembro asignado con éxito." };
+}
