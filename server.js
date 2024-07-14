@@ -7,6 +7,7 @@ import authRoutes from './routes/authRoutes.js';
 import profileRoutes from './routes/profileRoutes.js';
 import squadRoutes from './routes/squadRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import raceRoutes from './routes/raceRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { setupSwagger } from './utils/swagger.js';
 
@@ -23,6 +24,7 @@ app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
 app.use('/squad', squadRoutes);
 app.use('/users', userRoutes);
+app.use('/races', raceRoutes);
 
 // Configurar Swagger
 setupSwagger(app);
