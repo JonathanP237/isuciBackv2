@@ -1,6 +1,6 @@
 import { getUserById, createUser, updateUser, deleteUser } from '../models/userModel.js';
 import { validarNombreEscuadra, validarEspecialidad, validarAñosExperiencia, validarTipoContextura } from '../utils/userTypeValidation.js';
-import DBPool from './dbConfig';
+import DBPool from '../config/dbConfig.js';
 import {getUsuarioLogin} from './authService.js';
 
 const pool = new DBPool();

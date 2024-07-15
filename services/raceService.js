@@ -1,4 +1,4 @@
-import DBPool from './dbConfig';
+import DBPool from '../config/dbConfig.js';
 
 const pool = new DBPool();
 
