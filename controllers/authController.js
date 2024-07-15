@@ -1,8 +1,9 @@
 import { autUsuario, validarTipoUsuario, validarTipo, getUsuarioLogin} from '../services/authService.js';
 import { enviarCorreoConfirmacion } from '../services/emailService.js';
-import pool from '../config/dbConfig.js';
+import DBPool from './dbConfig';
 import bcrypt from 'bcrypt';
 
+const pool = new DBPool();
 const saltRounds = 10;
 
 export async function login(req, res) {

@@ -1,7 +1,9 @@
 import { getUserById, createUser, updateUser, deleteUser } from '../models/userModel.js';
 import { validarNombreEscuadra, validarEspecialidad, validarAñosExperiencia, validarTipoContextura } from '../utils/userTypeValidation.js';
-import pool from '../config/dbConfig.js';
+import DBPool from './dbConfig';
 import {getUsuarioLogin} from './authService.js';
+
+const pool = new DBPool();
 
 export async function validarDatosPerfil(res) {
   try {        

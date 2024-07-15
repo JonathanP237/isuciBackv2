@@ -1,4 +1,6 @@
-import pool from '../config/dbConfig.js';
+import DBPool from './dbConfig';
+
+const pool = new DBPool();
 
 export async function registrarEscuadra(id,desc,idPais) {
     const sql = `insert into escuadras (idescuadra, desescuadra, tiempoescuadra, pais) values ($1, $2, $3, $4)`;

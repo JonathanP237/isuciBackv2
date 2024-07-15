@@ -1,5 +1,7 @@
 import bcrypt from 'bcrypt';
-import pool from '../config/dbConfig.js';
+import DBPool from './dbConfig';
+
+const pool = new DBPool();
 
 let usuarioLogin = null;
 

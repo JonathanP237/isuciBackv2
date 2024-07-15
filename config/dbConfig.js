@@ -1,11 +1,19 @@
-
 import pg from 'pg';
 import { config } from 'dotenv';
 
 config();
 
-const pool = new pg.Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+class DBPool {
+  static instance = null;
 
-export default pool;
+  constructor() {
+    if (!DBPool.instance) {
+      DBPool.instance = new pg.Pool({
+        connectionString: process.env.DATABASE_URL,
+      });
+    }
+    return DBPool.instance;
+  }
+}
+
+export default DBPool;
