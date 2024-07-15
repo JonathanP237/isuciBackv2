@@ -27,3 +27,22 @@ export async function actualizarMiembroEscuadra(idUsuario, idEscuadraNuevo) {
     }
     return { message: "Miembro asignado con éxito." };
 }
+
+export async function actualizarTiempoEscuadra(idEscuadra, tiempo) {
+    // Paso 1: Obtener el tiempo actual de la escuadra
+    const sqlSelect = `SELECT tiempoescuadra FROM escuadras WHERE idescuadra = $1`;
+    const result = await pool.query(sqlSelect, [parseInt(idEscuadra,10)]);
+    if (result.rows.length === 0) {
+        throw new Error('Escuadra no encontrada.');
+    }
+    const tiempoActual = result.rows[0].tiempoescuadra;
+
+    // Paso 2: Sumar el tiempo proporcionado al tiempo actual
+    const nuevoTiempo = tiempoActual + tiempo;
+
+    // Paso 3: Actualizar el tiempo de la escuadra en la base de datos
+    const sqlUpdate = `UPDATE escuadras SET tiempoescuadra = $1 WHERE idescuadra = $2`;
+    await pool.query(sqlUpdate, [nuevoTiempo, idEscuadra]);
+
+    return { message: "Tiempo actualizado." };
+}

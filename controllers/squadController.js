@@ -57,3 +57,17 @@ export const asignarMiembrosEscuadras = async (req, res) => {
     res.status(500).json({ message: "Error interno del servidor." });
   }
 }
+
+export const actualizarTiempoEscuadra = async (req, res) => {
+  const { idEscuadra, tiempo } = req.body;
+  if (!idEscuadra || !tiempo) {
+    return res.status(400).json({ message: "Falta el id de la escuadra o el tiempo en la solicitud." });
+  }
+  try{
+    const result = await actualizarTiempoEscuadra(idEscuadra, tiempo);
+    res.json(result);
+  }catch(error){
+    console.error(error);
+    res.status(500).json({ message: "Error interno del servidor." });
+  }
+}
