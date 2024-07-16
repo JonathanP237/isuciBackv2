@@ -9,7 +9,7 @@ export async function registrarEscuadra(id,desc,idPais) {
 }
 
 export async function getTotalEscuadras() {
-    const sql = await pool.query('SELECT * FROM escuadras');
+    const sql = await pool.query('SELECT * FROM escuadras WHERE idescuadra > 0');
     const result = sql.rows;
     return result;
 }
