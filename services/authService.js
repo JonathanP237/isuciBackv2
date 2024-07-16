@@ -11,7 +11,8 @@ export async function autUsuario(usuario, contrasenaIngresada) {
   if (result.rows.length > 0) {
     const user = result.rows[0];
     usuarioLogin = user;
-    console.log("Usuario actual: ", usuarioLogin.iddocumento);
+    console.log(usuarioLogin);
+    console.log("Tipo usuario actual: ", usuarioLogin.idtipousuario);
     const passwordMatch = await bcrypt.compare(contrasenaIngresada, user.contrasenausuario);
     if (passwordMatch && usuarioLogin.idtipousuario !== undefined) {
       return passwordMatch;
@@ -26,7 +27,7 @@ export async function validarTipoUsuario(usuarioLogin) {
   if (!usuarioLogin) {
     throw new Error("Usuario actual no válido o idtipousuario no definido");
   }
-  console.log(usuarioLogin.idtipousuario);
+  console.log("Tipo usuario actual: ", usuarioLogin.idtipousuario);
   const tiposDeUsuario = {
     1: "Masajista",
     2: "Administrador",
