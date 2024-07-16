@@ -34,6 +34,9 @@ export async function validarNombreEscuadra(idescuadra){
 
   export async function validarAñosExperiencia(fechainiciocarrera){
     const fechaActual = new Date();
+    if (fechainiciocarrera === null) {
+      return 0;
+    }
     return fechaActual.getFullYear() - fechainiciocarrera.getFullYear();
   }
 
