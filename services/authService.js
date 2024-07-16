@@ -34,7 +34,7 @@ export async function validarTipoUsuario(usuarioLogin) {
     4: "Ciclista"
   };
 
-  return tiposDeUsuario[usuarioLogin.idtipousuario] || "Ciclista";
+  return tiposDeUsuario[usuarioLogin.idtipousuario];
 }
 
 export async function validarTipo(tipousuario){
