@@ -19,7 +19,7 @@ export async function login(req, res) {
     if (!userAuthenticated) {
       return res.status(401).json({ message: "Usuario o contraseña incorrectos." });
     }
-    const result = await validarTipoUsuario(getUsuarioLogin);
+    const result = await validarTipoUsuario();
     console.log(result);
     return res.json(result);
   } catch (error) {

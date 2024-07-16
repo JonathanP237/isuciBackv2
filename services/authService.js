@@ -23,7 +23,7 @@ export async function autUsuario(usuario, contrasenaIngresada) {
   return false;
 }
 
-export async function validarTipoUsuario(usuarioLogin) {
+export async function validarTipoUsuario() {
   if (!usuarioLogin) {
     throw new Error("Usuario actual no válido o idtipousuario no definido");
   }
