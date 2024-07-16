@@ -1,4 +1,6 @@
-import pool from '../config/dbConfig.js';
+import DBPool from '../config/dbConfig.js';
+
+const pool = new DBPool();
 
 export async function validarNombreEscuadra(idescuadra){
   try {
