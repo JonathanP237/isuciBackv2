@@ -26,7 +26,7 @@ export async function validarTipoUsuario(usuarioLogin) {
   if (!usuarioLogin) {
     throw new Error("Usuario actual no válido o idtipousuario no definido");
   }
-
+  console.log(usuarioLogin.idtipousuario);
   const tiposDeUsuario = {
     1: "Masajista",
     2: "Administrador",
@@ -34,7 +34,7 @@ export async function validarTipoUsuario(usuarioLogin) {
     4: "Ciclista"
   };
 
-  return tiposDeUsuario[usuarioLogin.idtipousuario];
+  return tiposDeUsuario[parseInt(usuarioLogin.idtipousuario,10)];
 }
 
 export async function validarTipo(tipousuario){
